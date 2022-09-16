@@ -19,3 +19,10 @@ c.lineTo(300, 100);
 c.lineTo(400, 300);
 c.strokeStyle='red';
 c.stroke();
+
+
+c.beginPath();
+//     x    y   R  startAngle endAngle
+c.arc(200, 300, 30, 0, Math.PI * 2, false);
+c.strokeStyle = 'blue';
+c.stroke();
