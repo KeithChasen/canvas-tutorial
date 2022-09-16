@@ -26,3 +26,14 @@ c.beginPath();
 c.arc(200, 300, 30, 0, Math.PI * 2, false);
 c.strokeStyle = 'blue';
 c.stroke();
+
+const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
+for (let i = 0; i < 10; i++) {
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    c.beginPath();
+    c.arc(x, y, 20, 0, Math.PI * 2, false);
+    const colorIndex = Math.floor(Math.random() * 5);
+    c.strokeStyle = colors[colorIndex];
+    c.stroke();
+}
