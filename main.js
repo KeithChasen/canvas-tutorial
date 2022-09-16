@@ -4,6 +4,7 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
+c.fillStyle = 'rgba(243, 200, 100, .6)';
 c.fillRect(100, 100, 50, 50);
 
 c.beginPath();
