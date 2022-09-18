@@ -1,13 +1,13 @@
 class Circle {
-    MAX_RADIUS = 40;
-    MIN_RADIUS = 5;
 
-    constructor({ x, y, radius, speedSignX, speedSignY, color }) {
+    constructor({ x, y, radius, maxRadius, minRadius, speedSignX, speedSignY, color, speed }) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.dx = 1 * speedSignX;
-        this.dy = 1 * speedSignY;
+        this.maxRadius = maxRadius;
+        this.minRadius = minRadius;
+        this.dx = speed * speedSignX;
+        this.dy = speed * speedSignY;
         this.color = color;
     }
 
@@ -34,14 +34,14 @@ class Circle {
         this.y += this.dy;
 
         if (Math.abs(clientX - this.x) <= 50 && Math.abs(clientY - this.y) <= 50) {
-            if (this.radius > this.MAX_RADIUS) {
-                this.radius = this.MAX_RADIUS;
+            if (this.radius > this.maxRadius) {
+                this.radius = this.maxRadius;
             }
 
             this.radius = this.radius + 1
         } else {
-            if (this.radius < this.MIN_RADIUS) {
-                this.radius = this.MIN_RADIUS;
+            if (this.radius < this.minRadius) {
+                this.radius = this.minRadius;
             }
 
             this.radius = this.radius - 1

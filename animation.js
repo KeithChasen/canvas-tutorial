@@ -11,13 +11,18 @@ function initialSetUpForCircle() {
     const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
     const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
 
+    const maxRadius = Math.random() * 40 + 10;
+    const minRadius = Math.random() * 5 + 1;
+
+    const speed = Math.random();
+
     const radius = 5;
 
     const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
     const colorIndex = Math.floor(Math.random() * 5)
     const color = colors[colorIndex];
 
-    return { x, y, speedSignX, speedSignY, radius, color };
+    return { x, y, speedSignX, speedSignY, radius, color, minRadius, maxRadius, speed };
 }
 
 const circles = [];
