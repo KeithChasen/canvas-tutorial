@@ -3,18 +3,18 @@ class Circle {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.dx = 4 * speedSignX;
-        this.dy = 4 * speedSignY;
+        this.dx = 2 * speedSignX;
+        this.dy = 2 * speedSignY;
         this.color = color;
     }
 
     draw(c) {
         c.beginPath();
-        c.arc(this.x, this.y, radius, 0, Math.PI * 2, false);
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
         c.strokeStyle = this.color;
+        c.fillStyle = this.color;
         c.stroke();
-
-
+        c.fill();
     }
 
     update(innerWidth, innerHeight) {

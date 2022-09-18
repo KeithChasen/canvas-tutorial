@@ -11,7 +11,7 @@ function initialSetUpForCircle() {
     const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
     const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
 
-    const radius = 40;
+    const radius = 20;
 
     const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
     const colorIndex = Math.floor(Math.random() * 5)
@@ -21,11 +21,10 @@ function initialSetUpForCircle() {
 }
 
 const circles = [];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 100; i++) {
     circles.push(new Circle(initialSetUpForCircle()));
 }
 
-const radius = 30;
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight);
