@@ -11,7 +11,7 @@ function initialSetUpForCircle() {
     const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
     const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
 
-    const radius = 20;
+    const radius = 5;
 
     const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
     const colorIndex = Math.floor(Math.random() * 5)
@@ -25,12 +25,19 @@ for (let i = 0; i < 100; i++) {
     circles.push(new Circle(initialSetUpForCircle()));
 }
 
+let clientX = null;
+let clientY = null;
+addEventListener('mousemove', function (e) {
+    clientX = e.clientX;
+    clientY = e.clientY;
+});
+
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight);
     circles.forEach(circle => {
         circle.draw(c);
-        circle.update(innerWidth, innerHeight);
+        circle.update(innerWidth, innerHeight, clientX, clientY);
     });
 }
 
