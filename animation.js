@@ -4,35 +4,35 @@ canvas.height = window.innerHeight;
 
 var c = canvas.getContext('2d');
 
+function initialSetUpForCircle() {
+    let x = Math.random() * innerWidth;
+    let y = Math.random() * innerHeight;
 
-let x = Math.random() * innerWidth;
-let y = Math.random() * innerHeight;
+    const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
+    const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
 
-const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
-const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
+    const radius = 40;
 
-let dx = 4 * speedSignX; // X velocity
-let dy = 4 * speedSignY; // Y velocity
+    const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
+    const colorIndex = Math.floor(Math.random() * 5)
+    const color = colors[colorIndex];
+
+    return { x, y, speedSignX, speedSignY, radius, color };
+}
+
+const circles = [];
+for (let i = 0; i < 10; i++) {
+    circles.push(new Circle(initialSetUpForCircle()));
+}
+
 const radius = 30;
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight);
-
-    c.beginPath();
-    c.arc(x, y, radius, 0, Math.PI * 2, false);
-    c.strokeStyle = 'blue';
-    c.stroke();
-
-    if (x + radius > innerWidth || x - radius < 0) {
-        dx = -dx;
-    }
-
-    if (y + radius > innerHeight || y - radius < 0) {
-        dy = -dy;
-    }
-
-    x += dx;
-    y += dy;
+    circles.forEach(circle => {
+        circle.draw(c);
+        circle.update(innerWidth, innerHeight);
+    });
 }
 
 animate();
