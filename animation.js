@@ -5,10 +5,14 @@ canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
 
 
-let x = 200;
-let y = 200;
-let dx = 4; // X velocity
-let dy = 4; // Y velocity
+let x = Math.random() * innerWidth;
+let y = Math.random() * innerHeight;
+
+const speedSignX = Math.round(Math.random()) === 0 ? -1 : 1;
+const speedSignY = Math.round(Math.random()) === 0 ? -1 : 1;
+
+let dx = 4 * speedSignX; // X velocity
+let dy = 4 * speedSignY; // Y velocity
 const radius = 30;
 function animate() {
     requestAnimationFrame(animate)
