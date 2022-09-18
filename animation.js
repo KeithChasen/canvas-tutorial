@@ -18,23 +18,35 @@ function initialSetUpForCircle() {
 
     const radius = 5;
 
-    const colors = ['yellow', 'red', 'blue', 'pink', 'green'];
+    const colors = ['#F0D237', '#F78B6D', '#FA6672', '#32DBA2', '#B096E0'];
     const colorIndex = Math.floor(Math.random() * 5)
     const color = colors[colorIndex];
 
     return { x, y, speedSignX, speedSignY, radius, color, minRadius, maxRadius, speed };
 }
 
-const circles = [];
-for (let i = 0; i < 100; i++) {
-    circles.push(new Circle(initialSetUpForCircle()));
+let circles = [];
+function init() {
+    circles = [];
+    for (let i = 0; i < 800; i++) {
+        circles.push(new Circle(initialSetUpForCircle()));
+    }
 }
+
+init();
 
 let clientX = null;
 let clientY = null;
 addEventListener('mousemove', function (e) {
     clientX = e.clientX;
     clientY = e.clientY;
+});
+
+addEventListener('resize', function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    init();
 });
 
 function animate() {
