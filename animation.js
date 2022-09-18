@@ -6,6 +6,7 @@ var c = canvas.getContext('2d');
 
 
 let x = 200;
+let dx = 1; // velocity
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight);
@@ -15,7 +16,11 @@ function animate() {
     c.strokeStyle = 'blue';
     c.stroke();
 
-    x++;
+    if (x > innerWidth || x < 0) {
+        dx = -dx;
+    }
+
+    x += dx;
 }
 
 animate();
